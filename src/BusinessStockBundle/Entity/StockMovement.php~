@@ -1,0 +1,52 @@
+<?php
+
+namespace BusinessStockBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * StockMovement
+ *
+ * @ORM\Table(name="stock_movement", indexes={@ORM\Index(name="fk_stock_mov_mov_cat_idx", columns={"id_movement_category"}), @ORM\Index(name="fk_bus_store_idx", columns={"id_business_owner"})})
+ * @ORM\Entity
+ */
+class StockMovement
+{
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_stock_movement", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idStockMovement;
+
+    /**
+     * @var \BusinessStockBundle\Entity\MovementCategory
+     *
+     * @ORM\ManyToOne(targetEntity="BusinessStockBundle\Entity\MovementCategory")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_movement_category", referencedColumnName="id_movement_category")
+     * })
+     */
+    private $idMovementCategory;
+
+    /**
+     * @var \BusinessStockBundle\Entity\BusinessStore
+     *
+     * @ORM\ManyToOne(targetEntity="BusinessStockBundle\Entity\BusinessStore")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_business_owner", referencedColumnName="id_business_store")
+     * })
+     */
+    private $idBusinessOwner;
+
+
+}

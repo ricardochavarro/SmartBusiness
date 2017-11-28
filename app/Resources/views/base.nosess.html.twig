@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+        <title>{% block title %}SmartBusiness{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <!-- Favicon icon -->
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
+        <!-- Bootstrap Core CSS -->
+        <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="{{ asset('css/style.css')}}" rel="stylesheet">
+        <!-- You can change the theme colors from here -->
+        <link href="{{ asset('css/colors/blue.css')}}" id="theme" rel="stylesheet">
+        
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body class="fix-header card-no-border">
+        {% block menu %}
+        {% endblock %}
+        <div style="padding: 15px;">
+            <div style="height: 80px"></div>
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascriptsbase %}
+            <script>
+                function validarFormulario(errorMap, errorList, validElements)
+                {
+                    jQuery.each(validElements, function (index, element) {
+                            var element = jQuery(element);
+                            element.removeClass("error").popover("destroy");
+                    });
+
+                    jQuery.each(errorList, function (index, error) {
+                            var element = jQuery(error.element);
+                            element.popover('destroy').addClass('error').popover({animation: true, placement: 'top', trigger: 'focus', title: '', content: error.message});
+                    });
+                }
+            </script>
+        {% endblock %}
+        {% block javascripts %}{% endblock %}
+        
+        <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{ asset('assets/plugins/bootstrap/js/tether.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{ asset('js/jquery.slimscroll.js') }}"></script>
+    <!--Wave Effects -->
+    <script src="{{ asset('js/waves.js') }}"></script>
+    <!--Menu sidebar -->
+    <script src="{{ asset('js/sidebarmenu.js') }}"></script>
+    <!--stickey kit -->
+    <script src="{{ asset('assets/plugins/sticky-kit-master/dist/sticky-kit.min.js')}} "></script>
+    <!--Custom JavaScript -->
+    <script src="{{ asset('js/custom.min.js')}}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <!-- Flot Charts JavaScript -->
+    <script src="{{ asset('assets/plugins/flot/jquery.flot.js')}}"></script>
+    <script src="{{ asset('assets/plugins/flot.tooltip/js/jquery.flot.tooltip.min.js')}}"></script>
+    <script src="{{ asset('js/flot-data.js')}}"></script>
+    <!-- ============================================================== -->
+    <!-- Style switcher -->
+    <!-- ============================================================== -->
+    <script src="{{ asset('assets/plugins/styleswitcher/jQuery.style.switcher.js')}}"></script>
+    </body>
+</html>

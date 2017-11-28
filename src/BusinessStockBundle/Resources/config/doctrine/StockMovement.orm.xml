@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BusinessStockBundle\Entity\StockMovement" table="stock_movement">
+    <indexes>
+      <index name="fk_stock_mov_mov_cat_idx" columns="id_movement_category"/>
+      <index name="fk_bus_store_idx" columns="id_business_owner"/>
+    </indexes>
+    <id name="idStockMovement" type="integer" column="id_stock_movement">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="date" type="date" column="date" nullable="false"/>
+    <many-to-one field="idMovementCategory" target-entity="MovementCategory">
+      <join-columns>
+        <join-column name="id_movement_category" referenced-column-name="id_movement_category"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idBusinessOwner" target-entity="BusinessStore">
+      <join-columns>
+        <join-column name="id_business_owner" referenced-column-name="id_business_store"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BusinessStockBundle\Entity\ItemCategory" table="item_category">
+    <indexes>
+      <index name="fk_business_ow_idx" columns="id_business_owner"/>
+    </indexes>
+    <id name="idItemCategory" type="integer" column="id_item_category">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="20" nullable="false"/>
+    <many-to-one field="idBusinessOwner" target-entity="BusinessStore">
+      <join-columns>
+        <join-column name="id_business_owner" referenced-column-name="id_business_store"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

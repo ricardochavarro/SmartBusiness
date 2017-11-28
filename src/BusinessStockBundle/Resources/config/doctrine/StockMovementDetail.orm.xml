@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BusinessStockBundle\Entity\StockMovementDetail" table="stock_movement_detail">
+    <indexes>
+      <index name="fk_stock_mov_idx" columns="id_stock_movement"/>
+      <index name="fk_item_idx" columns="id_item"/>
+    </indexes>
+    <id name="idStockMovementDetail" type="integer" column="id_stock_movement_detail">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="unitValue" type="bigint" column="unit_value" nullable="false"/>
+    <field name="totalValue" type="bigint" column="total_value" nullable="false"/>
+    <field name="itemAmount" type="integer" column="item_amount" nullable="false"/>
+    <many-to-one field="idItem" target-entity="Item">
+      <join-columns>
+        <join-column name="id_item" referenced-column-name="id_item"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idStockMovement" target-entity="StockMovement">
+      <join-columns>
+        <join-column name="id_stock_movement" referenced-column-name="id_stock_movement"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

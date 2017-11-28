@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="BusinessStockBundle\Entity\Item" table="item">
+    <indexes>
+      <index name="fk_categ_idx" columns="id_item_category"/>
+      <index name="fk_item_business_idx" columns="id_business_owner"/>
+    </indexes>
+    <id name="idItem" type="integer" column="id_item">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="name" type="string" column="name" length="20" nullable="false"/>
+    <field name="reference" type="string" column="reference" length="100" nullable="false"/>
+    <field name="description" type="string" column="description" length="100" nullable="false"/>
+    <field name="active" type="boolean" column="active" nullable="false"/>
+    <many-to-one field="idBusinessOwner" target-entity="BusinessStore">
+      <join-columns>
+        <join-column name="id_business_owner" referenced-column-name="id_business_store"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idItemCategory" target-entity="ItemCategory">
+      <join-columns>
+        <join-column name="id_item_category" referenced-column-name="id_item_category"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

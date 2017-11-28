@@ -1,0 +1,32 @@
+<?php
+
+namespace BusinessStockBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * MovementCategory
+ *
+ * @ORM\Table(name="movement_category")
+ * @ORM\Entity
+ */
+class MovementCategory
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="name", type="integer", nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_movement_category", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idMovementCategory;
+
+
+}

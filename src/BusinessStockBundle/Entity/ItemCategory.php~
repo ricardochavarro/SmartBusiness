@@ -1,0 +1,42 @@
+<?php
+
+namespace BusinessStockBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ItemCategory
+ *
+ * @ORM\Table(name="item_category", indexes={@ORM\Index(name="fk_business_ow_idx", columns={"id_business_owner"})})
+ * @ORM\Entity
+ */
+class ItemCategory
+{
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=20, nullable=false)
+     */
+    private $name;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id_item_category", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idItemCategory;
+
+    /**
+     * @var \BusinessStockBundle\Entity\BusinessStore
+     *
+     * @ORM\ManyToOne(targetEntity="BusinessStockBundle\Entity\BusinessStore")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_business_owner", referencedColumnName="id_business_store")
+     * })
+     */
+    private $idBusinessOwner;
+
+
+}

@@ -1,0 +1,13 @@
+app_security:
+    resource: "@AppSecurityBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+business_stock:
+    resource: "@BusinessStockBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
